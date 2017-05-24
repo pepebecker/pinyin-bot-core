@@ -1,0 +1,31 @@
+{
+  "name": "pinyin-bot-core",
+  "version": "1.0.0",
+  "description": "Core module for my Telegram bot and my Messenger bot.",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pepebecker/pinyin-bot-core"
+  },
+  "keywords": [
+    "pinyin",
+    "bot",
+    "core",
+    "telegram",
+    "messenger"
+  ],
+  "author": "Pepe Becker <mail@pepebecker.com> (http://pepebecker.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pepebecker/pinyin-bot-core/issues"
+  },
+  "homepage": "https://github.com/pepebecker/pinyin-bot-core#readme",
+  "dependencies": {
+    "find-hanzi": "^1.0.6",
+    "pinyin-convert": "^1.0.3",
+    "pinyin-or-hanzi": "^1.0.3",
+    "pinyin-split": "^1.0.3",
+    "so": "^1.0.1"
+  }
+}
