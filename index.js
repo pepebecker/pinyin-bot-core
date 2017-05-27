@@ -6,34 +6,6 @@ const findHanzi = require('find-hanzi')
 const split = require('pinyin-split')
 const so = require('so')
 
-let platform = 'telegram'
-
-const setPlatform = (_platform) => {
-	platform = _platform.toLowerCase()
-}
-
-const send = (text, replyObject) => {
-	switch (platform) {
-	case 'telegram':
-		replyObject.reply(text)
-		console.log(`Sent message: ${text}`)
-		break
-	case 'messenger':
-		replyObject({text}, (err) => {
-			if (err) {
-				console.error(err)
-				process.exit(1)
-			}
-
-			console.log(`Sent message: ${text}`)
-		})
-		break
-	default:
-		console.error('Unsupported platform:', platform)
-		console.log('Supported platforms are: telegram, messenger')
-	}
-}
-
 const createDescription = (data) => {
 	let content = ''
 	for (let item of data) {
@@ -47,7 +19,7 @@ const createDescription = (data) => {
 	return content
 }
 
-const sendHanzi = (text, replyObject) => {
+const sendHanzi = (text, callback) => {
 	pinyinOrHanzi(text).then((type) => {
 		if (type == 1) {
 			so(function*() {
@@ -56,10 +28,10 @@ const sendHanzi = (text, replyObject) => {
 				for (let char of characters) {
 					yield findHanzi(char).then((data) => {
 						response += createDescription(data)
-					})
+					}).catch(callback)
 				}
 				if (response.replace(/\n\ /g, '') != '') {
-					send(response, replyObject)
+					callback(response)
 				}
 			})()
 		} else {
@@ -67,71 +39,59 @@ const sendHanzi = (text, replyObject) => {
 				const response = createDescription(data)
 
 				if (response.replace(/\n\ /g, '') != '') {
-					send(response, replyObject)
+					callback(response)
 				}
-			}).catch((err) => {
-				send(err, replyObject)
-			})
+			}).catch(callback)
 		}
-	}).catch((error) => {
-		send(error, replyObject)
-	})
+	}).catch(callback)
 }
 
-const sendPinyin = (text, replyObject) => {
+const sendPinyin = (text, callback) => {
 	pinyinOrHanzi(text).then((type) => {
 		if (type > 0) {
-			convert(text, {keepSpaces: true}).then((data) => {
-				send(data, replyObject)
-			}).catch((err) => {
-				send(err, replyObject)
-			})
+			convert(text, {keepSpaces: true})
+			.then(callback)
+			.catch(callback)
 		}
-	}).catch((err) => {
-		send(err, replyObject)
-	})
+	}).catch(callback)
 }
 
-const sendSplitted = (text, replyObject) => {
+const sendSplitted = (text, callback) => {
 	pinyinOrHanzi(text).then((type) => {
 		if (type !== 1) {
 			split(text).then((data) => {
-				send(data.join(' '), replyObject)
-			}).catch((err) => {
-				send(err, replyObject)
-			})
+				callback(data.join(' '))
+			}).catch(callback)
 		}
-	}).catch((error) => {
-		send(error, replyObject)
-	})
+	}).catch(callback)
 }
 
-const processMessage = (text, replyObject) => {
+const processMessage = (text, callback) => {
 	if (/^\/(s|split) /.test(text))
 	{
 		console.log('Received command:', text)
 		text = text.replace('/split ', '')
 		text = text.replace('/s ', '')
-		sendSplitted(text, replyObject)
+		sendSplitted(text, callback)
 	}
 	else if (/^\/(p|pinyin) /.test(text))
 	{
 		console.log('Received command:', text)
 		text = text.replace('/pinyin ', '')
 		text = text.replace('/p ', '')
-		sendPinyin(text, replyObject)
+		sendPinyin(text, callback)
 	}
 	else if (/^\/(h|hanzi) /.test(text))
 	{
 		console.log('Received command:', text)
 		text = text.replace('/hanzi ', '')
 		text = text.replace('/h ', '')
-		sendHanzi(text, replyObject)
+		sendHanzi(text, callback)
 	}
 	else {
 		console.log('Received message:', text)
-		sendPinyin(text, replyObject)
+		sendPinyin(text, callback)
 	}
 }
 
-module.exports = {setPlatform, processMessage}
+module.exports = {processMessage}
