@@ -6,7 +6,7 @@
   "scripts": {},
   "repository": {
     "type": "git",
-    "url": "https://github.com/pepebecker/pinyin-bot-core"
+    "url": "https://github.com/pepebecker/pinyin-bot-core.git"
   },
   "keywords": [
     "pinyin",
