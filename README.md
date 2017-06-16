@@ -18,25 +18,46 @@ npm install pepebecker/pinyin-bot-core
 ```js
 const botCore = require('pinyin-bot-core')
 
-botCore.processMessage('我是德国人', (response) => {
-  console.log(response) // wǒ shì dé guó rén
-}
+// Default
+botCore.processMessage('你的中文很好啊')
+.then(console.log)  // nǐ de zhōng wén hěn hǎo a
+.catch(console.error)
 
-botCore.processMessage('/p 你的中文很好啊', (response) => {
-  console.log(response) // nǐ de zhōng wén hěn hǎo a
-}
+// Pinyin (/p | /pinyin)
+botCore.processMessage('/p 你的中文很好啊')
+.then(console.log)  // nǐ de zhōng wén hěn hǎo a
+.catch(console.error)
 
-botCore.processMessage('/p nǐ de zhōng wén hěn hǎo a', (response) => {
-  console.log(response) // ni3 de zhong1 wen2 hen3 hao3 a
-}
+botCore.processMessage('/p nǐ de zhōng wén hěn hǎo a')
+.then(console.log)  // ni3 de zhong1 wen2 hen3 hao3 a
+.catch(console.error)
 
-botCore.processMessage('/p ni3 de zhong1 wen2 hen3 hao3 a', (response) => {
-  console.log(response) // nǐ de zhōng wén hěn hǎo a
-}
+botCore.processMessage('/p ni3 de zhong1 wen2 hen3 hao3 a')
+.then(console.log)  // nǐ de zhōng wén hěn hǎo a
+.catch(console.error)
 
-botCore.processMessage('/s wǒdemāoxǐhuānhēniúnǎi', (response) => {
-  console.log(response) // wǒ de māo xǐ huān hē niú nǎi
-}
+// Split (/s | /split)
+botCore.processMessage('/s nidezhongwenhenhaoa')
+.then(console.log)  // ni de zhong wen hen hao a
+.catch(console.error)
+
+botCore.processMessage('/s nǐdezhōngwénhěnhǎoa')
+.then(console.log)  // nǐ de zhōng wén hěn hǎo a
+.catch(console.error)
+
+botCore.processMessage('/s ni3dezhong1wen2hen3hao3a')
+.then(console.log)  // ni3 de zhong1 wen2 hen3 hao3 a
+.catch(console.error)
+
+// Hanzi (/h | /hanzi)
+botCore.processMessage('/h 乐')
+.then(console.log)
+.catch(console.error)
+／／ Character: 乐
+／／ Pinyin: lè
+／／ Cangjie: HVD : 竹女木
+／／ Strokes: 5
+／／ Definition: happy, glad; enjoyable; music
 ```
 
 ## Related
