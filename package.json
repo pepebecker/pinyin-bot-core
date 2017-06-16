@@ -2,30 +2,41 @@
   "name": "pinyin-bot-core",
   "version": "1.0.0",
   "description": "Core module for my Telegram bot and my Messenger bot.",
+  "keywords": [
+    "bot",
+    "core",
+    "messenger",
+    "pinyin",
+    "telegram"
+  ],
+  "homepage": "https://github.com/pepebecker/pinyin-bot-core#readme",
+  "bugs": {
+    "url": "https://github.com/pepebecker/pinyin-bot-core/issues"
+  },
+  "license": "MIT",
+  "author": "Pepe Becker <mail@pepebecker.com> (http://pepebecker.com)",
   "main": "index.js",
-  "scripts": {},
   "repository": {
     "type": "git",
     "url": "https://github.com/pepebecker/pinyin-bot-core.git"
   },
-  "keywords": [
-    "pinyin",
-    "bot",
-    "core",
-    "telegram",
-    "messenger"
-  ],
-  "author": "Pepe Becker <mail@pepebecker.com> (http://pepebecker.com)",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/pepebecker/pinyin-bot-core/issues"
+  "scripts": {
+    "cover": "istanbul cover _mocha",
+    "coveralls": "npm run cover -- --report lcovonly && cat ./coverage/lcov.info | coveralls",
+    "test": "mocha"
   },
-  "homepage": "https://github.com/pepebecker/pinyin-bot-core#readme",
   "dependencies": {
     "find-hanzi": "^1.0.6",
     "pinyin-convert": "^1.0.3",
     "pinyin-or-hanzi": "^1.0.3",
     "pinyin-split": "^1.0.3",
     "so": "^1.0.1"
+  },
+  "devDependencies": {
+    "coveralls": "^2.13.1",
+    "istanbul": "^0.4.5",
+    "mocha": "^3.4.2",
+    "mocha-lcov-reporter": "^1.3.0",
+    "should": "^11.2.1"
   }
 }

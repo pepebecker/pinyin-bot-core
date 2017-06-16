@@ -26,9 +26,12 @@ const sendHanzi = (text, callback) => {
 				let response = ''
 				const characters = text.split('')
 				for (let char of characters) {
-					yield findHanzi(char).then((data) => {
+					try {
+						const data = yield findHanzi(char)
 						response += createDescription(data)
-					}).catch(callback)
+					} catch (err) {
+						callback(err)
+					}
 				}
 				if (response.replace(/\n\ /g, '') != '') {
 					callback(response)
