@@ -19,7 +19,7 @@ const createDescription = (data) => {
 	return content
 }
 
-const sendHanzi = (text, callback) => {
+const getHanzi = (text, callback) => {
 	pinyinOrHanzi(text).then((type) => {
 		if (type == 1) {
 			so(function*() {
@@ -49,7 +49,7 @@ const sendHanzi = (text, callback) => {
 	}).catch(callback)
 }
 
-const sendPinyin = (text, callback) => {
+const getPinyin = (text, callback) => {
 	pinyinOrHanzi(text).then((type) => {
 		if (type > 0) {
 			convert(text, {keepSpaces: true})
@@ -59,7 +59,7 @@ const sendPinyin = (text, callback) => {
 	}).catch(callback)
 }
 
-const sendSplitted = (text, callback) => {
+const getSplitted = (text, callback) => {
 	pinyinOrHanzi(text).then((type) => {
 		if (type !== 1) {
 			split(text).then((data) => {
@@ -69,32 +69,32 @@ const sendSplitted = (text, callback) => {
 	}).catch(callback)
 }
 
-const processMessage = (text, callback) => {
+const processMessage = (text, callback) => new Promise((yay, nay) => {
 	if (/^\/(s|split) /.test(text))
 	{
 		console.log('Received command:', text)
 		text = text.replace('/split ', '')
 		text = text.replace('/s ', '')
-		sendSplitted(text, callback)
+		getSplitted(text, yay)
 	}
 	else if (/^\/(p|pinyin) /.test(text))
 	{
 		console.log('Received command:', text)
 		text = text.replace('/pinyin ', '')
 		text = text.replace('/p ', '')
-		sendPinyin(text, callback)
+		getPinyin(text, yay)
 	}
 	else if (/^\/(h|hanzi) /.test(text))
 	{
 		console.log('Received command:', text)
 		text = text.replace('/hanzi ', '')
 		text = text.replace('/h ', '')
-		sendHanzi(text, callback)
+		getHanzi(text, yay)
 	}
 	else {
 		console.log('Received message:', text)
-		sendPinyin(text, callback)
+		getPinyin(text, yay)
 	}
-}
+})
 
 module.exports = {processMessage}
