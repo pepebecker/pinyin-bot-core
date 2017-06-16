@@ -53,11 +53,11 @@ botCore.processMessage('/s ni3dezhong1wen2hen3hao3a')
 botCore.processMessage('/h 乐')
 .then(console.log)
 .catch(console.error)
-／／ Character: 乐
-／／ Pinyin: lè
-／／ Cangjie: HVD : 竹女木
-／／ Strokes: 5
-／／ Definition: happy, glad; enjoyable; music
+// Character: 乐
+// Pinyin: lè
+// Cangjie: HVD : 竹女木
+// Strokes: 5
+// Definition: happy, glad; enjoyable; music
 ```
 
 ## Related
