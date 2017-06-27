@@ -68,6 +68,8 @@ botCore.processMessage('/h 乐')
 - [`pinyin-or-hanzi`](https://github.com/pepebecker/pinyin-or-hanzi)
 - [`hanzi-to-pinyin`](https://github.com/pepebecker/hanzi-to-pinyin)
 - [`pinyin-convert`](https://github.com/pepebecker/pinyin-convert)
+- [`pinyin-telegram`](https://github.com/pepebecker/pinyin-telegram)
+- [`pinyin-messenger`](https://github.com/pepebecker/pinyin-messenger)
 
 ## Contributing
 
