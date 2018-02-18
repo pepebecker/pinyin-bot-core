@@ -91,16 +91,3 @@ describe('Split (/split)', () => {
 		})
 	})
 })
-
-// describe('Hanzi (/h)', () => {
-// 	it('should get the right information about a Chinese character', () => {
-// 		return botCore.processMessage('/h 乐').then(data => {
-// 			const lines = data.split('\n')
-// 			lines[0].should.equal('Character: 乐')
-// 			lines[1].should.equal('Pinyin: lè')
-// 			lines[2].should.equal('Cangjie: HVD : 竹女木')
-// 			lines[3].should.equal('Strokes: 5')
-// 			lines[4].should.equal('Definition: happy, glad; enjoyable; music')
-// 		})
-// 	})
-// })

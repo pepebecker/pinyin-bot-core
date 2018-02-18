@@ -26,17 +26,21 @@ const getSplitted = async text => {
 
 const getDefinition = async text => {
 	const char = await mdbg.get(text)
-	let content = [char.simplified + '|' + char.traditional]
-	content = content.concat(Object.keys(char.data).map(pinyin => {
-		let defs = char.data[pinyin].definitions
-		if (defs.join(', ').length < 80) {
-			defs = defs.join(', ')
-		} else {
-			defs = defs.join(',\n    ')
-		}
-		return char.data[pinyin].mandarin + ': ' + defs
-	}))
-	return content.join('\n')
+	if (char) {
+		let content = [char.simplified + '|' + char.traditional]
+		content = content.concat(Object.keys(char.data).map(pinyin => {
+			let defs = char.data[pinyin].definitions
+			if (defs.join(', ').length < 80) {
+				defs = defs.join(', ')
+			} else {
+				defs = defs.join(',\n    ')
+			}
+			return char.data[pinyin].mandarin + ': ' + defs
+		}))
+		return content.join('\n')
+	} else {
+		return 'No definition found for ' + text
+	}
 }
 
 const processMessage = async text => {
@@ -52,11 +56,15 @@ const processMessage = async text => {
 		text = text.replace('/p ', '')
 		return getPinyin(text)
 	}
-	else if (/^\/(d|definition) /.test(text))
-	{
+	else if (/^\/(d|definition) /.test(text)) {
 		text = text.replace('/definition ', '')
 		text = text.replace('/d ', '')
 		return getDefinition(text)
+	}
+	else if (/^\/(m|mdbg) /.test(text)) {
+		text = text.replace('/mdbg ', '')
+		text = text.replace('/m ', '')
+		return 'https://www.mdbg.net/chinese/dictionary?page=worddict&wdrst=0&wdqb=' + encodeURIComponent(text)
 	}
 	else {
 		return getPinyin(text)

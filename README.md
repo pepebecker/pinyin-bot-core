@@ -48,16 +48,6 @@ botCore.processMessage('/s nǐdezhōngwénhěnhǎoa')
 botCore.processMessage('/s ni3dezhong1wen2hen3hao3a')
 .then(console.log)  // ni3 de zhong1 wen2 hen3 hao3 a
 .catch(console.error)
-
-// Hanzi (/h | /hanzi)
-botCore.processMessage('/h 乐')
-.then(console.log)
-.catch(console.error)
-// Character: 乐
-// Pinyin: lè
-// Cangjie: HVD : 竹女木
-// Strokes: 5
-// Definition: happy, glad; enjoyable; music
 ```
 
 ## Related
