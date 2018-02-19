@@ -27,7 +27,7 @@
   },
   "dependencies": {
     "mdbg": "^1.0.3",
-    "pinyin-convert": "^1.0.7",
+    "pinyin-convert": "^1.0.8",
     "pinyin-or-hanzi": "^1.1.0",
     "pinyin-split": "^1.0.8"
   },

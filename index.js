@@ -8,7 +8,14 @@ const split = require('pinyin-split')
 const getPinyin = async text => {
 	const type = await pinyinOrHanzi(text)
 	if (type !== 'other') {
-		return convert(text, {keepSpaces: true})
+		const data = await convert(text, { segmented: true })
+		return typeof data === 'string' ? data : data.map(part => {
+			if (typeof part === 'string') {
+				return part
+			} else {
+				return part[0]
+			}
+		}).join('')
 	} else {
 		return text
 	}

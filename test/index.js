@@ -5,17 +5,17 @@ const botCore = require('../index')
 describe('Default', () => {
 	it('should convert characters to Pinyin', () => {
 		return botCore.processMessage('我的猫喜欢喝牛奶').then(data => {
-			data.should.equal('wǒ de māo xǐ huan hē niú nǎi')
+			data.should.equal('wǒ de māo xǐhuan hē niúnǎi')
 		})
 	})
 	it('should convert characters to Pinyin', () => {
-		return botCore.processMessage('wǒ de māo xǐ huan hē niú nǎi').then(data => {
-			data.should.equal('wo3 de5 mao1 xi3 huan5 he1 niu2 nai3')
+		return botCore.processMessage('wǒ de māo xǐhuan hē niúnǎi').then(data => {
+			data.should.equal('wo3 de5 mao1 xi3huan5 he1 niu2nai3')
 		})
 	})
 	it('should convert characters to Pinyin', () => {
-		return botCore.processMessage('wo3 de5 mao1 xi3 huan5 he1 niu2 nai3').then(data => {
-			data.should.equal('wǒ de māo xǐ huan hē niú nǎi')
+		return botCore.processMessage('wo3 de5 mao1 xi3huan5 he1 niu2nai3').then(data => {
+			data.should.equal('wǒ de māo xǐhuan hē niúnǎi')
 		})
 	})
 })
@@ -23,17 +23,17 @@ describe('Default', () => {
 describe('Pinyin (/p)', () => {
 	it('should convert characters to Pinyin', () => {
 		return botCore.processMessage('/p 我的猫喜欢喝牛奶').then(data => {
-			data.should.equal('wǒ de māo xǐ huan hē niú nǎi')
+			data.should.equal('wǒ de māo xǐhuan hē niúnǎi')
 		})
 	})
 	it('should convert characters to Pinyin', () => {
-		return botCore.processMessage('/p wǒ de māo xǐ huan hē niú nǎi').then(data => {
-			data.should.equal('wo3 de5 mao1 xi3 huan5 he1 niu2 nai3')
+		return botCore.processMessage('/p wǒ de māo xǐhuan hē niúnǎi').then(data => {
+			data.should.equal('wo3 de5 mao1 xi3huan5 he1 niu2nai3')
 		})
 	})
 	it('should convert characters to Pinyin', () => {
-		return botCore.processMessage('/p wo3 de5 mao1 xi3 huan5 he1 niu2 nai3').then(data => {
-			data.should.equal('wǒ de māo xǐ huan hē niú nǎi')
+		return botCore.processMessage('/p wo3 de5 mao1 xi3huan5 he1 niu2nai3').then(data => {
+			data.should.equal('wǒ de māo xǐhuan hē niúnǎi')
 		})
 	})
 })
@@ -41,17 +41,17 @@ describe('Pinyin (/p)', () => {
 describe('Pinyin (/pinyin)', () => {
 	it('should convert characters to Pinyin', () => {
 		return botCore.processMessage('/pinyin 我的猫喜欢喝牛奶').then(data => {
-			data.should.equal('wǒ de māo xǐ huan hē niú nǎi')
+			data.should.equal('wǒ de māo xǐhuan hē niúnǎi')
 		})
 	})
 	it('should convert characters to Pinyin', () => {
-		return botCore.processMessage('/pinyin wǒ de māo xǐ huan hē niú nǎi').then(data => {
-			data.should.equal('wo3 de5 mao1 xi3 huan5 he1 niu2 nai3')
+		return botCore.processMessage('/pinyin wǒ de māo xǐhuan hē niúnǎi').then(data => {
+			data.should.equal('wo3 de5 mao1 xi3huan5 he1 niu2nai3')
 		})
 	})
 	it('should convert characters to Pinyin', () => {
-		return botCore.processMessage('/pinyin wo3 de5 mao1 xi3 huan5 he1 niu2 nai3').then(data => {
-			data.should.equal('wǒ de māo xǐ huan hē niú nǎi')
+		return botCore.processMessage('/pinyin wo3 de5 mao1 xi3huan5 he1 niu2nai3').then(data => {
+			data.should.equal('wǒ de māo xǐhuan hē niúnǎi')
 		})
 	})
 })
