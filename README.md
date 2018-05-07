@@ -1,7 +1,6 @@
 # Pinyin Bot Core
 
 [![Travis Build Status](https://travis-ci.org/pepebecker/pinyin-bot-core.svg)](https://travis-ci.org/pepebecker/pinyin-bot-core)
-[![Coverage Status](https://coveralls.io/repos/github/pepebecker/pinyin-bot-core/badge.svg)](https://coveralls.io/github/pepebecker/pinyin-bot-core)
 [![Greenkeeper badge](https://badges.greenkeeper.io/pepebecker/pinyin-bot-core.svg)](https://greenkeeper.io/)
 [![dependency status](https://img.shields.io/david/pepebecker/pinyin-bot-core.svg)](https://david-dm.org/pepebecker/pinyin-bot-core)
 [![dev dependency status](https://img.shields.io/david/dev/pepebecker/pinyin-bot-core.svg)](https://david-dm.org/pepebecker/pinyin-bot-core#info=devDependencies)

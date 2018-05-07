@@ -31,22 +31,55 @@ const getSplitted = async text => {
 	}
 }
 
+const createDefinition = char => {
+	let content = [char.simplified + '|' + char.traditional]
+	content = content.concat(Object.keys(char.definitions).map(pinyin => {
+		let trans = char.definitions[pinyin].translations
+		if (trans.join(', ').length < 80) {
+			trans = trans.join(', ')
+		} else {
+			trans = trans.join(',\n    ')
+		}
+		return char.definitions[pinyin].pinyin + ': ' + trans
+	}))
+	return content.join('\n')
+}
+
 const getDefinition = async text => {
-	const char = await mdbg.get(text)
-	if (char) {
-		let content = [char.simplified + '|' + char.traditional]
-		content = content.concat(Object.keys(char.data).map(pinyin => {
-			let defs = char.data[pinyin].definitions
-			if (defs.join(', ').length < 80) {
-				defs = defs.join(', ')
-			} else {
-				defs = defs.join(',\n    ')
-			}
-			return char.data[pinyin].mandarin + ': ' + defs
-		}))
-		return content.join('\n')
+	const data = await mdbg.get(text)
+	if (data) {
+		if (Array.isArray(data)) return data.map(createDefinition).join('\n\n')
+		else return createDefinition(data)
 	} else {
 		return 'No definition found for ' + text
+	}
+}
+
+const createDescription = char => {
+	let content = [char.simplified + '|' + char.traditional]
+	content = content.concat(Object.keys(char.definitions).map(pinyin => {
+		let trans = char.definitions[pinyin].translations
+		if (trans.join(', ').length < 80) {
+			trans = trans.join(', ')
+		} else {
+			trans = trans.join(',\n    ')
+		}
+		return [
+			'Pinyin: ' + char.definitions[pinyin].pinyin,
+			'Zhuyin: ' + char.definitions[pinyin].zhuyin,
+			'Definition: ' + trans
+		].join('\n')
+	}))
+	return content.join('\n–––––––––––\n')
+}
+
+const getDescription = async text => {
+	const data = await mdbg.get(text)
+	if (data) {
+		if (Array.isArray(data)) return data.map(createDescription).join('\n\n')
+		else return createDescription(data)
+	} else {
+		return 'No description found for ' + text
 	}
 }
 
@@ -67,6 +100,11 @@ const processMessage = async text => {
 		text = text.replace('/definition ', '')
 		text = text.replace('/d ', '')
 		return getDefinition(text)
+	}
+	else if (/^\/(h|hanzi) /.test(text)) {
+		text = text.replace('/hanzi ', '')
+		text = text.replace('/h ', '')
+		return getDescription(text)
 	}
 	else if (/^\/(m|mdbg) /.test(text)) {
 		text = text.replace('/mdbg ', '')
