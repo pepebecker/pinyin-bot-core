@@ -24,7 +24,7 @@
     "test": "mocha --timeout 20000"
   },
   "dependencies": {
-    "mdbg": "^1.4.0",
+    "mdbg": "^1.6.0",
     "pinyin-convert": "^1.1.0",
     "pinyin-or-hanzi": "^1.1.0",
     "pinyin-split": "^1.0.8"
