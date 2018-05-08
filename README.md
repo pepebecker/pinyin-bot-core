@@ -11,7 +11,7 @@
 ## Install
 
 ```shell
-npm install pepebecker/pinyin-bot-core
+npm install pinyin-bot-core
 ```
 
 ## Usage
@@ -22,39 +22,33 @@ const botCore = require('pinyin-bot-core')
 // Default
 botCore.processMessage('你的中文很好啊')
 .then(console.log)  // nǐ de zhōng wén hěn hǎo a
-.catch(console.error)
 
 // Pinyin (/p | /pinyin)
 botCore.processMessage('/p 你的中文很好啊')
 .then(console.log)  // nǐ de zhōng wén hěn hǎo a
-.catch(console.error)
 
 botCore.processMessage('/p nǐ de zhōng wén hěn hǎo a')
 .then(console.log)  // ni3 de zhong1 wen2 hen3 hao3 a
-.catch(console.error)
 
 botCore.processMessage('/p ni3 de zhong1 wen2 hen3 hao3 a')
 .then(console.log)  // nǐ de zhōng wén hěn hǎo a
-.catch(console.error)
 
 // Split (/s | /split)
 botCore.processMessage('/s nidezhongwenhenhaoa')
 .then(console.log)  // ni de zhong wen hen hao a
-.catch(console.error)
 
 botCore.processMessage('/s nǐdezhōngwénhěnhǎoa')
 .then(console.log)  // nǐ de zhōng wén hěn hǎo a
-.catch(console.error)
 
 botCore.processMessage('/s ni3dezhong1wen2hen3hao3a')
 .then(console.log)  // ni3 de zhong1 wen2 hen3 hao3 a
-.catch(console.error)
 ```
 
 ## Related
 
 - [`pinyin-utils`](https://github.com/pepebecker/pinyin-utils)
 - [`pinyin-split`](https://github.com/pepebecker/pinyin-split)
+- [`zhuyin`](https://github.com/pepebecker/zhuyin)
 - [`find-hanzi`](https://github.com/pepebecker/find-hanzi)
 - [`hsk-words`](https://github.com/pepebecker/hsk-words)
 - [`cedict`](https://github.com/pepebecker/cedict)
