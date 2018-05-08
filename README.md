@@ -1,5 +1,6 @@
 # Pinyin Bot Core
 
+[![npm version](https://img.shields.io/npm/v/pinyin-bot-core.svg)](https://www.npmjs.com/package/pinyin-bot-core)
 [![Travis Build Status](https://travis-ci.org/pepebecker/pinyin-bot-core.svg)](https://travis-ci.org/pepebecker/pinyin-bot-core)
 [![Greenkeeper badge](https://badges.greenkeeper.io/pepebecker/pinyin-bot-core.svg)](https://greenkeeper.io/)
 [![dependency status](https://img.shields.io/david/pepebecker/pinyin-bot-core.svg)](https://david-dm.org/pepebecker/pinyin-bot-core)
