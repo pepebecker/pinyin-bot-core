@@ -1,13 +1,14 @@
 {
   "name": "pinyin-bot-core",
   "version": "1.0.0",
-  "description": "Core module for my Telegram bot and my Messenger bot.",
+  "description": "Core module for my Telegram and Messenger bot",
   "keywords": [
+    "pinyin",
     "bot",
     "core",
+    "telegram",
     "messenger",
-    "pinyin",
-    "telegram"
+    "line"
   ],
   "homepage": "https://github.com/pepebecker/pinyin-bot-core#readme",
   "bugs": {
