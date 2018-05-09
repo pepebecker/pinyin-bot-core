@@ -7,9 +7,9 @@ const split = require('pinyin-split')
 const zhuyin = require('zhuyin')
 
 const getPinyin = async text => {
-	const type = await pinyinOrHanzi(text)
+	const type = pinyinOrHanzi(text)
 	if (type !== 'other') {
-		const data = await convert(text, { segmented: true })
+		const data = await convert(text, { segmented: true, everything: true })
 		return typeof data === 'string' ? data : data.map(part => {
 			if (typeof part === 'string') {
 				return part
@@ -23,7 +23,7 @@ const getPinyin = async text => {
 }
 
 const getZhuyin = async text => {
-	const type = await pinyinOrHanzi(text)
+	const type = pinyinOrHanzi(text)
 	if (type !== 'other') {
 		const data = await convert(text, { segmented: true })
 		if (typeof data === 'string') {
@@ -44,7 +44,7 @@ const getZhuyin = async text => {
 }
 
 const getSplitted = async text => {
-	const type = await pinyinOrHanzi(text)
+	const type = pinyinOrHanzi(text)
 	if (type !== 'mandarin') {
 		const data = await split(text)
 		return data.join(' ')

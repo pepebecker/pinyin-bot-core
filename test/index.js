@@ -10,7 +10,7 @@ describe('Default', () => {
 	})
 	it('should convert characters to Pinyin', () => {
 		return botCore.processMessage('wǒ de māo xǐhuan hē niúnǎi').then(data => {
-			data.should.equal('wo3 de5 mao1 xi3huan5 he1 niu2nai3')
+			data.should.equal('wo3 de mao1 xi3huan he1 niu2nai3')
 		})
 	})
 	it('should convert characters to Pinyin', () => {
@@ -28,7 +28,7 @@ describe('Pinyin (/p)', () => {
 	})
 	it('should convert characters to Pinyin', () => {
 		return botCore.processMessage('/p wǒ de māo xǐhuan hē niúnǎi').then(data => {
-			data.should.equal('wo3 de5 mao1 xi3huan5 he1 niu2nai3')
+			data.should.equal('wo3 de mao1 xi3huan he1 niu2nai3')
 		})
 	})
 	it('should convert characters to Pinyin', () => {
@@ -46,7 +46,7 @@ describe('Pinyin (/pinyin)', () => {
 	})
 	it('should convert characters to Pinyin', () => {
 		return botCore.processMessage('/pinyin wǒ de māo xǐhuan hē niúnǎi').then(data => {
-			data.should.equal('wo3 de5 mao1 xi3huan5 he1 niu2nai3')
+			data.should.equal('wo3 de mao1 xi3huan he1 niu2nai3')
 		})
 	})
 	it('should convert characters to Pinyin', () => {
