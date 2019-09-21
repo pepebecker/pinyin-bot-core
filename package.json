@@ -28,7 +28,7 @@
     "mdbg": "^1.31.0",
     "pinyin-convert": "^1.10.0",
     "pinyin-or-hanzi": "^1.16.0",
-    "pinyin-split": "^1.27.0",
+    "pinyin-split": "^1.75.0",
     "zhuyin": "^1.10.0"
   },
   "devDependencies": {
